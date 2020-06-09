@@ -2,12 +2,13 @@
 version: 2.1
 # Use a package of configuration called an orb.
 orbs:
-  # Declare a dependency on the welcome-orb
-  welcome: circleci/welcome-orb@0.4.1
-# Orchestrate or schedule a set of jobs
-workflows:
-  # Name the workflow "welcome"
-  welcome:
-    # Run the welcome/run job in its own container
-    jobs:
-      - welcome/run
+  aws-s3: circleci/aws-s3@1.0.15
+jobs:
+      upload:
+        docker:
+          - image: 'cimg/python:3.6'
+    steps:
+      - checkout
+      - aws-s3/copy:
+        from: testS3circleci/testuploads3_carolina
+          to: s3://circlecitestupload

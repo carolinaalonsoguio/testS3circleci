@@ -7,7 +7,7 @@ jobs:
   build:
     working_directory: /project
     docker:
-      - image: 'cimg/python:3.6'
+      - image: cimg/python:3.6
     steps:
       - checkout
       - run:
@@ -15,7 +15,7 @@ jobs:
           command: |
             ls
             cd testS3circleci
-            ls 
+            ls
             pwd
       - aws-s3/copy:
           from: testS3circleci/testuploads3_carolina.txt

@@ -5,10 +5,18 @@ orbs:
   aws-s3: circleci/aws-s3@1.0.15
 jobs:
   build:
+    working_directory: /project
     docker:
       - image: 'cimg/python:3.6'
     steps:
       - checkout
+      - run:
+          name: Info
+          command: |
+            ls
+            cd testS3circleci
+            ls 
+            pwd
       - aws-s3/copy:
           from: testS3circleci/testuploads3_carolina.txt
           to: s3://circlecitestupload

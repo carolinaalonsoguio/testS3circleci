@@ -5,7 +5,7 @@ orbs:
   aws-s3: circleci/aws-s3@1.0.15
 jobs:
   build:
-    working_directory: /project
+    working_directory: ~/project
     docker:
       - image: cimg/python:3.6
     steps:

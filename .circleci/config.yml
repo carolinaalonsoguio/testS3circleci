@@ -10,6 +10,5 @@ jobs:
     steps:
       - checkout
       - aws-s3/copy:
-          arguments: '--dry-run'
           from: testS3circleci/testuploads3_carolina
           to: s3://circlecitestupload

@@ -11,6 +11,5 @@ jobs:
       - checkout
       - aws-s3/copy:
           arguments: '--dry-run'
-          aws-region: us-east-2
           from: testS3circleci/testuploads3_carolina
           to: s3://circlecitestupload

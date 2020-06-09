@@ -14,8 +14,6 @@ jobs:
           name: Info
           command: |
             ls
-            cd testS3circleci
-            ls
             pwd
       - aws-s3/copy:
           from: testS3circleci/testuploads3_carolina.txt

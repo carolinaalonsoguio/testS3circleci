@@ -11,4 +11,4 @@ jobs:
       - checkout
       - aws-s3/copy:
           from: ~/project/testS3circleci/testuploads3_carolina.txt
-          to: s3://circlecitestupload
+          to: s3://circlecitestupload/testuploads3_carolina.txt

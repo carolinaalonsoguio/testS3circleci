@@ -9,6 +9,7 @@ jobs:
       - image: 'cimg/python:3.6'
     steps:
       - checkout
+      - run: pwd
       - aws-s3/copy:
           from: ~/testS3circleci/testuploads3_carolina
           to: s3://circlecitestupload

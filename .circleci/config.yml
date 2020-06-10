@@ -10,7 +10,6 @@ jobs:
     steps:
       - checkout
       - aws-s3/copy:
-          overwrite: true
           aws-access-key-id: AWS_ACCESS_KEY_ID_CARO
           aws-region: AWS_REGION
           aws-secret-access-key: AWS_SECRET_ACCESS_KEY_CARO

@@ -10,7 +10,6 @@ jobs:
     steps:
       - checkout
       - aws-s3/copy:
-          aws_auth:
           aws-access-key-id: AWS_ACCESS_KEY_ID_CARO
           aws-secret-access-key: AWS_SECRET_ACCESS_KEY_CARO
           from: testuploads3_carolina.txt

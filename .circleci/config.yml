@@ -12,5 +12,6 @@ jobs:
       - aws-s3/copy:
           aws-access-key-id: AWS_ACCESS_KEY_ID_CARO
           aws-secret-access-key: AWS_SECRET_ACCESS_KEY_CARO
+          aws-region: AWS_REGION
           from: testuploads3_carolina.txt
           to: s3://circlecitestupload

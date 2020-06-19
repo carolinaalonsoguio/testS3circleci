@@ -12,8 +12,8 @@ jobs:
       - run:
           name: Setting env/qa branch environment variables.
           command: |
-            mkdir ~/.aws echo -e
-          "[CARO]\naws_access_key_id=$AWS_ACCESS_KEY_ID_CARO\naws_secret_access_key=$AWS_SECRET_ACCESS_KEY_CARO\n" > ~/.aws/credentials
+            mkdir ~/.aws
+            echo -e "[CARO]\naws_access_key_id=$AWS_ACCESS_KEY_ID_CARO\naws_secret_access_key=$AWS_SECRET_ACCESS_KEY_CARO\n" > ~/.aws/credentials
       - aws-s3/copy:
           arguments: --profile CARO
           from: testuploads3_carolina.txt

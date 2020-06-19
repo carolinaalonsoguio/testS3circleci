@@ -9,9 +9,12 @@ jobs:
       - image: cimg/python:3.6
     steps:
       - checkout
+      - run:
+          name: Setting env/qa branch environment variables.
+          command: |
+          mkdir ~/.aws echo -e
+          "[CARO]\naws_access_key_id=$AWS_ACCESS_KEY_ID_CARO\naws_secret_access_key=$AWS_SECRET_ACCESS_KEY_CARO\n" > ~/.aws/credentials
       - aws-s3/copy:
-          aws-access-key-id: AWS_ACCESS_KEY_ID_CARO
-          aws-secret-access-key: AWS_SECRET_ACCESS_KEY_CARO
-          aws-region: AWS_REGION
+          profile-name: CARO
           from: testuploads3_carolina.txt
           to: s3://circlecitestupload

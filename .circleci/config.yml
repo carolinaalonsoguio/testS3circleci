@@ -14,7 +14,8 @@ jobs:
           command: |
             mkdir ~/.aws
             echo -e "[user]\naws_access_key_id=$AWS_ACCESS_KEY_ID_CARO\naws_secret_access_key=$AWS_SECRET_ACCESS_KEY_CARO\n" >> ~/.aws/credentials
-      - aws-s3/copy:
+      - aws-cli/setup:
           profile-name: user
+      - aws-s3/copy:
           from: testuploads3_carolina.txt
           to: s3://circlecitestupload

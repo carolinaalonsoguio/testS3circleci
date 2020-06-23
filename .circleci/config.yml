@@ -21,13 +21,14 @@ jobs:
           command: |
             echo 'aws configure --profile user1 set aws_access_key_id $AWS_ACCESS_KEY_ID_CIRCLECI'
             echo 'aws configure --profile user1 set aws_secret_access_key $AWS_SECRET_ACCESS_KEY_CIRCLECI'
-            echo 'aws configure --profile user1 list'
+            echo 'aws configure --profile user1 set region us-east-1'
       - run:
           name: Set AWS Credentials
           command: |
             echo 'aws configure --profile user2 set aws_access_key_id $AWS_ACCESS_KEY_ID_CARO'
             echo 'aws configure --profile user2 set aws_secret_access_key $TEST_AWS_SECRET_ACCESS_CARO'
-            echo 'aws configure --profile user2 list'
+            echo 'aws configure --profile user2 set region us-east-1'
       - aws-s3/copy:
+
           from: testuploads3_carolina.txt
           to: s3://circlecitestupload

@@ -10,25 +10,24 @@ jobs:
       - image: cimg/python:3.6
     steps:
       - checkout
+      # - run:
+      #     name: Setting env/qa branch environment variables.
+      #     command: |
+      #       mkdir ~/.aws
+      #       echo -e "[user]\naws_access_key_id=$AWS_ACCESS_KEY_ID_CARO\naws_secret_access_key=$AWS_SECRET_ACCESS_KEY_CARO\n" >> ~/.aws/credentials
+      #       echo -e "[user]\nregion=us-east-1\noutput=text\n" >> ~/.aws/config
       - run:
-          name: Setting env/qa branch environment variables.
+          name: Set AWS Credentials
           command: |
-            mkdir ~/.aws
-            echo -e "[user]\naws_access_key_id=$AWS_ACCESS_KEY_ID_CARO\naws_secret_access_key=$AWS_SECRET_ACCESS_KEY_CARO\n" >> ~/.aws/credentials
-            echo -e "[user]\nregion=us-east-1\noutput=text\n" >> ~/.aws/config
-      # - run:
-      #     name: Set AWS Credentials
-      #     command: |
-      #       echo 'aws configure --profile user1 set aws_access_key_id $AWS_ACCESS_KEY_ID_CIRCLECI'
-      #       echo 'aws configure --profile user1 set aws_secret_access_key $AWS_SECRET_ACCESS_KEY_CIRCLECI'
-      #       echo 'aws configure --profile user1 list'
-      # - run:
-      #     name: Set AWS Credentials
-      #     command: |
-      #       echo 'aws configure --profile user2 set aws_access_key_id $AWS_ACCESS_KEY_ID_CARO'
-      #       echo 'aws configure --profile user2 set aws_secret_access_key $TEST_AWS_SECRET_ACCESS_CARO'
-      #       echo 'aws configure --profile user2 list'
+            echo 'aws configure --profile user1 set aws_access_key_id $AWS_ACCESS_KEY_ID_CIRCLECI'
+            echo 'aws configure --profile user1 set aws_secret_access_key $AWS_SECRET_ACCESS_KEY_CIRCLECI'
+            echo 'aws configure --profile user1 list'
+      - run:
+          name: Set AWS Credentials
+          command: |
+            echo 'aws configure --profile user2 set aws_access_key_id $AWS_ACCESS_KEY_ID_CARO'
+            echo 'aws configure --profile user2 set aws_secret_access_key $TEST_AWS_SECRET_ACCESS_CARO'
+            echo 'aws configure --profile user2 list'
       - aws-s3/copy:
-          arguments: --profile user
           from: testuploads3_carolina.txt
           to: s3://circlecitestupload

@@ -29,6 +29,6 @@ jobs:
       #       echo 'aws configure --profile user2 set aws_secret_access_key $TEST_AWS_SECRET_ACCESS_CARO'
       #       echo 'aws configure --profile user2 list'
       - aws-s3/copy:
-          arguments: --profile user2
+          arguments: --profile user
           from: testuploads3_carolina.txt
           to: s3://circlecitestupload

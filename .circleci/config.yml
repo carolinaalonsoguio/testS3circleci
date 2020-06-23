@@ -15,7 +15,7 @@ jobs:
           command: |
             mkdir ~/.aws
             echo -e "[user]\naws_access_key_id=$AWS_ACCESS_KEY_ID_CARO\naws_secret_access_key=$AWS_SECRET_ACCESS_KEY_CARO\n" >> ~/.aws/credentials
-            echo -e "[profile user]\nregion=us-east-1\noutput=text\n" >> ~/.aws/config
+            echo -e "[user]\nregion=us-east-1\noutput=text\n" >> ~/.aws/config
       # - run:
       #     name: Set AWS Credentials
       #     command: |

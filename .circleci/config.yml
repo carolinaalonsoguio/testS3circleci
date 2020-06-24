@@ -1,7 +1,6 @@
 
 version: 2.1
 orbs:
-  aws-cli: circleci/aws-cli@1.1.0
   aws-s3: circleci/aws-s3@1.0.15
 jobs:
   build:
@@ -20,7 +19,7 @@ jobs:
       #       echo -e "[user]\nregion=us-east-1\noutput=text\n" >> ~/.aws/config
       - run:
           name: AWS CLI install
-          commnad: |
+          command: |
             curl "https://awscli.amazonaws.com/awscli-exe-linux-aarch64.zip" -o "awscliv2.zip"
             unzip awscliv2.zip
             sudo ./aws/install

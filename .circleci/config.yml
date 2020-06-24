@@ -18,8 +18,12 @@ jobs:
       #       echo -e "[default]\nregion=us-east-1\noutput=text\n" >> ~/.aws/config
       #       echo -e "[user]\naws_access_key_id=$AWS_ACCESS_KEY_ID_CARO\naws_secret_access_key=$AWS_SECRET_ACCESS_KEY_CARO\n" >> ~/.aws/credentials
       #       echo -e "[user]\nregion=us-east-1\noutput=text\n" >> ~/.aws/config
-      - aws-cli/setup:
-          profile-name: user1
+      - run:
+          name: AWS CLI install
+          commnad: |
+            curl "https://awscli.amazonaws.com/awscli-exe-linux-aarch64.zip" -o "awscliv2.zip"
+            unzip awscliv2.zip
+            sudo ./aws/install
       - run:
           name: Set AWS Credentials
           command: |

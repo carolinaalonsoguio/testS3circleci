@@ -32,7 +32,7 @@ jobs:
             echo 'aws configure --profile user set aws_secret_access_key $TEST_AWS_SECRET_ACCESS_CARO'
             echo 'aws configure --profile user set region us-east-1'
             echo 'aws configure --profile user list'
-      - aws-cli/setup:
+      - aws-cli/setup
       - aws-s3/copy:
           arguments: '--profile user'
           from: testuploads3_carolina.txt

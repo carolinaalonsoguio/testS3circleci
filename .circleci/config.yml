@@ -21,17 +21,17 @@ jobs:
       - run:
           name: Set AWS Credentials
           command: |
-            echo 'aws configure --profile default set aws_access_key_id $AWS_ACCESS_KEY_ID_CIRCLECI'
-            echo 'aws configure --profile default set aws_secret_access_key $AWS_SECRET_ACCESS_KEY_CIRCLECI'
-            echo 'aws configure --profile default set region us-east-1'
-            echo 'aws configure --profile default list'
+            aws configure --profile default set aws_access_key_id $AWS_ACCESS_KEY_ID_CIRCLECI
+            aws configure --profile default set aws_secret_access_key $AWS_SECRET_ACCESS_KEY_CIRCLECI
+            aws configure --profile default set region us-east-1
+            aws configure --profile default list
       - run:
           name: Set AWS Credentials
           command: |
-            echo 'aws configure --profile user set aws_access_key_id $AWS_ACCESS_KEY_ID_CARO'
-            echo 'aws configure --profile user set aws_secret_access_key $TEST_AWS_SECRET_ACCESS_CARO'
-            echo 'aws configure --profile user set region us-east-1'
-            echo 'aws configure --profile test list'
+            aws configure --profile user set aws_access_key_id $AWS_ACCESS_KEY_ID_CARO
+            aws configure --profile user set aws_secret_access_key $TEST_AWS_SECRET_ACCESS_CARO
+            aws configure --profile user set region us-east-1
+            aws configure --profile user list
       - aws-s3/copy:
           arguments: '--profile user'
           from: testuploads3_carolina.txt

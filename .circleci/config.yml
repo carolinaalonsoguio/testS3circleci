@@ -33,7 +33,7 @@ jobs:
             echo 'aws configure --profile user set region us-east-1'
             echo 'aws configure --profile user list'
       - aws-cli/setup:
-          arguments: '--profile user'
+          profile-name: user
       - aws-s3/copy:
           from: testuploads3_carolina.txt
           to: s3://circlecitestupload

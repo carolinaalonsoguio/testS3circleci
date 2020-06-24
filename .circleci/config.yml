@@ -10,28 +10,28 @@ jobs:
       - image: cimg/python:3.6
     steps:
       - checkout
+      # - run:
+      #     name: Setting env/qa branch environment variables.
+      #     command: |
+      #       mkdir ~/.aws
+      #       echo -e "[default]\naws_access_key_id=$AWS_ACCESS_KEY_ID_CIRCLECI\naws_secret_access_key=$AWS_SECRET_ACCESS_KEY_CIRCLECI\n" >> ~/.aws/credentials
+      #       echo -e "[default]\nregion=us-east-1\noutput=text\n" >> ~/.aws/config
+      #       echo -e "[user]\naws_access_key_id=$AWS_ACCESS_KEY_ID_CARO\naws_secret_access_key=$AWS_SECRET_ACCESS_KEY_CARO\n" >> ~/.aws/credentials
+      #       echo -e "[user]\nregion=us-east-1\noutput=text\n" >> ~/.aws/config
       - run:
-          name: Setting env/qa branch environment variables.
+          name: Set AWS Credentials
           command: |
-            mkdir ~/.aws
-            echo -e "[default]\naws_access_key_id=$AWS_ACCESS_KEY_ID_CIRCLECI\naws_secret_access_key=$AWS_SECRET_ACCESS_KEY_CIRCLECI\n" >> ~/.aws/credentials
-            echo -e "[default]\nregion=us-east-1\noutput=text\n" >> ~/.aws/config
-            echo -e "[user]\naws_access_key_id=$AWS_ACCESS_KEY_ID_CARO\naws_secret_access_key=$AWS_SECRET_ACCESS_KEY_CARO\n" >> ~/.aws/credentials
-            echo -e "[user]\nregion=us-east-1\noutput=text\n" >> ~/.aws/config
-      # - run:
-      #     name: Set AWS Credentials
-      #     command: |
-      #       echo 'aws configure --profile default set aws_access_key_id $AWS_ACCESS_KEY_ID_CIRCLECI'
-      #       echo 'aws configure --profile default set aws_secret_access_key $AWS_SECRET_ACCESS_KEY_CIRCLECI'
-      #       echo 'aws configure --profile default set region us-east-1'
-      #       echo 'aws configure --profile default list'
-      # - run:
-      #     name: Set AWS Credentials
-      #     command: |
-      #       echo 'aws configure --profile user set aws_access_key_id $AWS_ACCESS_KEY_ID_CARO'
-      #       echo 'aws configure --profile user set aws_secret_access_key $TEST_AWS_SECRET_ACCESS_CARO'
-      #       echo 'aws configure --profile user set region us-east-1'
-      #       echo 'aws configure --profile test list'
+            echo 'aws configure --profile default set aws_access_key_id $AWS_ACCESS_KEY_ID_CIRCLECI'
+            echo 'aws configure --profile default set aws_secret_access_key $AWS_SECRET_ACCESS_KEY_CIRCLECI'
+            echo 'aws configure --profile default set region us-east-1'
+            echo 'aws configure --profile default list'
+      - run:
+          name: Set AWS Credentials
+          command: |
+            echo 'aws configure --profile user set aws_access_key_id $AWS_ACCESS_KEY_ID_CARO'
+            echo 'aws configure --profile user set aws_secret_access_key $TEST_AWS_SECRET_ACCESS_CARO'
+            echo 'aws configure --profile user set region us-east-1'
+            echo 'aws configure --profile test list'
       - aws-s3/copy:
           arguments: '--profile user'
           from: testuploads3_carolina.txt

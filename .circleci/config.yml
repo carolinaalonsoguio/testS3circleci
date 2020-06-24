@@ -20,9 +20,7 @@ jobs:
       - run:
           name: AWS CLI install
           command: |
-            curl "https://awscli.amazonaws.com/awscli-exe-linux-aarch64.zip" -o "awscliv2.zip"
-            unzip awscliv2.zip
-            sudo ./aws/install
+            pip3 install awscli
       - run:
           name: Set AWS Credentials
           command: |

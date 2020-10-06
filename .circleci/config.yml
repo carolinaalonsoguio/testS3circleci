@@ -27,8 +27,8 @@ jobs:
             aws configure --profile user2 set aws_secret_access_key $AWS_SECRET_ACCESS_KEY_YOUI
             aws configure --profile user2 set region us-east-1
             aws configure --profile user2 list
-      - requires: ['approve']
       - aws-s3/copy:
+          when: ['approve']
           arguments: '--profile user2'
           from: testuploads3_carolina.txt
           to: s3://circlecitestupload

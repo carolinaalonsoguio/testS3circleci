@@ -9,14 +9,6 @@ jobs:
       - image: cimg/python:3.6
     steps:
       - checkout
-      # - run:
-      #     name: Setting env/qa branch environment variables.
-      #     command: |
-      #       mkdir ~/.aws
-      #       echo -e "[default]\naws_access_key_id=$AWS_ACCESS_KEY_ID_CIRCLECI\naws_secret_access_key=$AWS_SECRET_ACCESS_KEY_CIRCLECI\n" >> ~/.aws/credentials
-      #       echo -e "[default]\nregion=us-east-1\noutput=text\n" >> ~/.aws/config
-      #       echo -e "[user]\naws_access_key_id=$AWS_ACCESS_KEY_ID_CARO\naws_secret_access_key=$AWS_SECRET_ACCESS_KEY_CARO\n" >> ~/.aws/credentials
-      #       echo -e "[user]\nregion=us-east-1\noutput=text\n" >> ~/.aws/config
       - run:
           name: AWS CLI install
           command: |
@@ -31,11 +23,14 @@ jobs:
       - run:
           name: Set AWS Credentials
           command: |
-            aws configure --profile user2 set aws_access_key_id $AWS_ACCESS_KEY_ID_CARO
-            aws configure --profile user2 set aws_secret_access_key $AWS_SECRET_ACCESS_KEY_CARO
+            aws configure --profile user2 set aws_access_key_id $AWS_ACCESS_KEY_ID_YOUI
+            aws configure --profile user2 set aws_secret_access_key $AWS_SECRET_ACCESS_KEY_YOUI
             aws configure --profile user2 set region us-east-1
             aws configure --profile user2 list
       - aws-s3/copy:
+          requires: ['approve']
           arguments: '--profile user2'
           from: testuploads3_carolina.txt
           to: s3://circlecitestupload
+     - approve:
+          type: approval

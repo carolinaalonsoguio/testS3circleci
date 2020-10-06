@@ -32,5 +32,5 @@ jobs:
           arguments: '--profile user2'
           from: testuploads3_carolina.txt
           to: s3://circlecitestupload
-     - approve:
-          type: approval
+      - approve:
+           type: approval

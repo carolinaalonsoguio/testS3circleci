@@ -10,6 +10,7 @@ jobs:
     steps:
       - checkout
       - run:
+          when: ['approve']
           name: AWS CLI install
           command: |
             pip3 install awscli
@@ -28,7 +29,6 @@ jobs:
             aws configure --profile user2 set region us-east-1
             aws configure --profile user2 list
       - aws-s3/copy:
-          when: ['approve']
           arguments: '--profile user2'
           from: testuploads3_carolina.txt
           to: s3://circlecitestupload
